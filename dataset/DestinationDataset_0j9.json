@@ -1,0 +1,15 @@
+{
+	"name": "DestinationDataset_0j9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SAPHANAViaODBCLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "\"DEVUSER\".\"FANDANGO\""
+		}
+	}
+}
