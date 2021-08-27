@@ -1,0 +1,15 @@
+{
+	"name": "DestinationDataset_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SAPHANAViaODBCLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "\"DEVUSER\".\"AIRLINE_DELAY\""
+		}
+	}
+}
