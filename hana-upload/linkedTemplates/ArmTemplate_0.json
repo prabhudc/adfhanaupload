@@ -89,7 +89,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_0j9')]",
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_zsm')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -235,7 +235,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_0j9')]",
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_zsm')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -255,13 +255,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_0j9')]",
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_zsm')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy_0j9",
+						"name": "Copy_zsm",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -321,7 +321,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RottenTomatoes",
+											"name": "ROTTENTOMATOES",
 											"type": "String"
 										}
 									},
@@ -332,7 +332,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RottenTomatoes_User",
+											"name": "ROTTENTOMATOES_USER",
 											"type": "String"
 										}
 									},
@@ -343,7 +343,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic",
+											"name": "METACRITIC",
 											"type": "String"
 										}
 									},
@@ -354,7 +354,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_User",
+											"name": "METACRITIC_USER",
 											"type": "String"
 										}
 									},
@@ -376,7 +376,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Fandango_Stars",
+											"name": "FANDANGO_STARS",
 											"type": "String"
 										}
 									},
@@ -387,7 +387,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Fandango_Ratingvalue",
+											"name": "FANDANGO_RATINGVALUE",
 											"type": "String"
 										}
 									},
@@ -398,7 +398,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RT_norm",
+											"name": "RT_NORM",
 											"type": "String"
 										}
 									},
@@ -409,7 +409,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RT_user_norm",
+											"name": "RT_USER_NORM",
 											"type": "String"
 										}
 									},
@@ -420,7 +420,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_norm",
+											"name": "METACRITIC_NORM",
 											"type": "String"
 										}
 									},
@@ -431,7 +431,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_user_nom",
+											"name": "METACRITIC_USER_NOM",
 											"type": "String"
 										}
 									},
@@ -442,7 +442,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "IMDB_norm",
+											"name": "IMDB_NORM",
 											"type": "String"
 										}
 									},
@@ -453,7 +453,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RT_norm_round",
+											"name": "RT_NORM_ROUND",
 											"type": "String"
 										}
 									},
@@ -464,7 +464,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "RT_user_norm_round",
+											"name": "RT_USER_NORM_ROUND",
 											"type": "String"
 										}
 									},
@@ -475,7 +475,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_norm_round",
+											"name": "METACRITIC_NORM_ROUND",
 											"type": "String"
 										}
 									},
@@ -486,7 +486,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_user_norm_round",
+											"name": "METACRITIC_USER_NORM_ROUND",
 											"type": "String"
 										}
 									},
@@ -497,7 +497,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "IMDB_norm_round",
+											"name": "IMDB_NORM_ROUND",
 											"type": "String"
 										}
 									},
@@ -508,7 +508,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Metacritic_user_vote_count",
+											"name": "METACRITIC_USER_VOTE_COUNT",
 											"type": "String"
 										}
 									},
@@ -519,7 +519,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "IMDB_user_vote_count",
+											"name": "IMDB_USER_VOTE_COUNT",
 											"type": "String"
 										}
 									},
@@ -530,7 +530,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Fandango_votes",
+											"name": "FANDANGO_VOTES",
 											"type": "String"
 										}
 									},
@@ -541,7 +541,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Fandango_Difference",
+											"name": "FANDANGO_DIFFERENCE",
 											"type": "String"
 										}
 									}
@@ -555,14 +555,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SourceDataset_0j9",
+								"referenceName": "SourceDataset_zsm",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DestinationDataset_0j9",
+								"referenceName": "DestinationDataset_zsm",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -572,8 +572,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_0j9')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_0j9')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_zsm')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_zsm')]"
 			]
 		}
 	]
