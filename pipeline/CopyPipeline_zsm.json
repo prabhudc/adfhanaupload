@@ -1,0 +1,314 @@
+{
+	"name": "CopyPipeline_zsm",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_zsm",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dump//fandango_scores.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "\"DEVUSER\".\"FANDANGO\""
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "OdbcSink",
+						"writeBatchSize": 0
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "FILM",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FILM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RottenTomatoes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ROTTENTOMATOES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RottenTomatoes_User",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ROTTENTOMATOES_USER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_User",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_USER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMDB",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMDB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fandango_Stars",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FANDANGO_STARS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fandango_Ratingvalue",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FANDANGO_RATINGVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RT_norm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RT_NORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RT_user_norm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RT_USER_NORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_norm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_NORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_user_nom",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_USER_NOM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMDB_norm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMDB_NORM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RT_norm_round",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RT_NORM_ROUND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RT_user_norm_round",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RT_USER_NORM_ROUND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_norm_round",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_NORM_ROUND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_user_norm_round",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_USER_NORM_ROUND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMDB_norm_round",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMDB_NORM_ROUND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Metacritic_user_vote_count",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METACRITIC_USER_VOTE_COUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMDB_user_vote_count",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMDB_USER_VOTE_COUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fandango_votes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FANDANGO_VOTES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fandango_Difference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FANDANGO_DIFFERENCE",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_zsm",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_zsm",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
