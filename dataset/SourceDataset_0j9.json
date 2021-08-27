@@ -1,0 +1,113 @@
+{
+	"name": "SourceDataset_0j9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "fandango_scores.csv",
+				"container": "dump"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FILM",
+				"type": "String"
+			},
+			{
+				"name": "RottenTomatoes",
+				"type": "String"
+			},
+			{
+				"name": "RottenTomatoes_User",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_User",
+				"type": "String"
+			},
+			{
+				"name": "IMDB",
+				"type": "String"
+			},
+			{
+				"name": "Fandango_Stars",
+				"type": "String"
+			},
+			{
+				"name": "Fandango_Ratingvalue",
+				"type": "String"
+			},
+			{
+				"name": "RT_norm",
+				"type": "String"
+			},
+			{
+				"name": "RT_user_norm",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_norm",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_user_nom",
+				"type": "String"
+			},
+			{
+				"name": "IMDB_norm",
+				"type": "String"
+			},
+			{
+				"name": "RT_norm_round",
+				"type": "String"
+			},
+			{
+				"name": "RT_user_norm_round",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_norm_round",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_user_norm_round",
+				"type": "String"
+			},
+			{
+				"name": "IMDB_norm_round",
+				"type": "String"
+			},
+			{
+				"name": "Metacritic_user_vote_count",
+				"type": "String"
+			},
+			{
+				"name": "IMDB_user_vote_count",
+				"type": "String"
+			},
+			{
+				"name": "Fandango_votes",
+				"type": "String"
+			},
+			{
+				"name": "Fandango_Difference",
+				"type": "String"
+			}
+		]
+	}
+}
