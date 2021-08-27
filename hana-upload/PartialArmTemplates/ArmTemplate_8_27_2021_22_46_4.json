@@ -6,22 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "hana-upload"
-		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
-		"SAPHANAViaODBCLinkedService_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SAPHANAViaODBCLinkedService'"
-		},
-		"SAPHANAViaODBCLinkedService_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'SAPHANAViaODBCLinkedService'"
-		},
-		"SAPHANAViaODBCLinkedService_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "DEVUSER"
 		}
 	},
 	"variables": {
@@ -397,15 +381,13 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_csv",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DestinationDataset_csv",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -433,36 +415,7 @@
 					"tableName": "\"DEVUSER\".\"AIRLINE_DELAY\""
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SAPHANAViaODBCLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/FandangoFile')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "fandango_scores.csv",
-						"container": "dump"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_csv')]",
@@ -600,187 +553,6 @@
 						"type": "String"
 					}
 				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_zsm')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "fandango_scores.csv",
-						"container": "dump"
-					},
-					"columnDelimiter": ",",
-					"rowDelimiter": "\n",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "FILM",
-						"type": "String"
-					},
-					{
-						"name": "RottenTomatoes",
-						"type": "String"
-					},
-					{
-						"name": "RottenTomatoes_User",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_User",
-						"type": "String"
-					},
-					{
-						"name": "IMDB",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Stars",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Ratingvalue",
-						"type": "String"
-					},
-					{
-						"name": "RT_norm",
-						"type": "String"
-					},
-					{
-						"name": "RT_user_norm",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_norm",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_nom",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_norm",
-						"type": "String"
-					},
-					{
-						"name": "RT_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "RT_user_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_vote_count",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_user_vote_count",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_votes",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Difference",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SAPHANAViaODBCLinkedService')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Odbc",
-				"typeProperties": {
-					"connectionString": {
-						"type": "SecureString",
-						"value": "[parameters('SAPHANAViaODBCLinkedService_connectionString')]"
-					},
-					"authenticationType": "Basic",
-					"userName": "[parameters('SAPHANAViaODBCLinkedService_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('SAPHANAViaODBCLinkedService_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "integrationRuntimeonVM",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeonVM')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/integrationRuntime')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/integrationRuntimeonVM')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
 			},
 			"dependsOn": []
 		}

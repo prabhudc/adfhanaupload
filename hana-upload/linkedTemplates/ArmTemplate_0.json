@@ -89,7 +89,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_qkz')]",
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -102,11 +102,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "2019.csv",
+						"fileName": "2018.csv",
 						"container": "dump"
 					},
 					"columnDelimiter": ",",
-					"rowDelimiter": "\n",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
@@ -117,7 +116,7 @@
 						"type": "String"
 					},
 					{
-						"name": "OP_UNIQUE_CARRIER",
+						"name": "OP_CARRIER",
 						"type": "String"
 					},
 					{
@@ -130,6 +129,10 @@
 					},
 					{
 						"name": "DEST",
+						"type": "String"
+					},
+					{
+						"name": "CRS_DEP_TIME",
 						"type": "String"
 					},
 					{
@@ -157,11 +160,35 @@
 						"type": "String"
 					},
 					{
+						"name": "CRS_ARR_TIME",
+						"type": "String"
+					},
+					{
 						"name": "ARR_TIME",
 						"type": "String"
 					},
 					{
 						"name": "ARR_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "CANCELLED",
+						"type": "String"
+					},
+					{
+						"name": "CANCELLATION_CODE",
+						"type": "String"
+					},
+					{
+						"name": "DIVERTED",
+						"type": "String"
+					},
+					{
+						"name": "CRS_ELAPSED_TIME",
+						"type": "String"
+					},
+					{
+						"name": "ACTUAL_ELAPSED_TIME",
 						"type": "String"
 					},
 					{
@@ -190,6 +217,10 @@
 					},
 					{
 						"name": "LATE_AIRCRAFT_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "Unnamed: 27",
 						"type": "String"
 					}
 				]
@@ -345,7 +376,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_qkz')]",
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -365,33 +396,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_zsm')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "SAPHANAViaODBCLinkedService",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "OdbcTable",
-				"schema": [],
-				"typeProperties": {
-					"tableName": "\"DEVUSER\".\"FANDANGO\""
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SAPHANAViaODBCLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_airline')]",
+			"name": "[concat(parameters('factoryName'), '/AirlineDataCopytoHANA')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy_qkz",
+						"name": "Copy_csv",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -404,7 +415,7 @@
 						"userProperties": [
 							{
 								"name": "Source",
-								"value": "dump//2019.csv"
+								"value": "dump//2018.csv"
 							},
 							{
 								"name": "Destination",
@@ -417,6 +428,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
+									"wildcardFileName": "20*",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -446,12 +458,12 @@
 									},
 									{
 										"source": {
-											"name": "OP_UNIQUE_CARRIER",
+											"name": "OP_CARRIER",
 											"type": "String",
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "OP_UNIQUE_CARRIER",
+											"name": "OP_CARRIER",
 											"type": "String"
 										}
 									},
@@ -485,6 +497,17 @@
 										},
 										"sink": {
 											"name": "DEST",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CRS_DEP_TIME",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CRS_DEP_TIME",
 											"type": "String"
 										}
 									},
@@ -556,6 +579,17 @@
 									},
 									{
 										"source": {
+											"name": "CRS_ARR_TIME",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CRS_ARR_TIME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
 											"name": "ARR_TIME",
 											"type": "String",
 											"physicalType": "String"
@@ -573,6 +607,61 @@
 										},
 										"sink": {
 											"name": "ARR_DELAY",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CANCELLED",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CANCELLED",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CANCELLATION_CODE",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CANCELLATION_CODE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "DIVERTED",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "DIVERTED",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CRS_ELAPSED_TIME",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CRS_ELAPSED_TIME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ACTUAL_ELAPSED_TIME",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ACTUAL_ELAPSED_TIME",
 											"type": "String"
 										}
 									},
@@ -652,326 +741,15 @@
 											"name": "LATE_AIRCRAFT_DELAY",
 											"type": "String"
 										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SourceDataset_qkz",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DestinationDataset_qkz",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_qkz')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_qkz')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_zsm')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy_zsm",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "dump//fandango_scores.csv"
-							},
-							{
-								"name": "Destination",
-								"value": "\"DEVUSER\".\"FANDANGO\""
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings",
-									"skipLineCount": 0
-								}
-							},
-							"sink": {
-								"type": "OdbcSink",
-								"writeBatchSize": 0
-							},
-							"enableStaging": false,
-							"validateDataConsistency": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "FILM",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FILM",
-											"type": "String"
-										}
 									},
 									{
 										"source": {
-											"name": "RottenTomatoes",
+											"name": "Unnamed: 27",
 											"type": "String",
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "ROTTENTOMATOES",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "RottenTomatoes_User",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ROTTENTOMATOES_USER",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_User",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_USER",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "IMDB",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "IMDB",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Fandango_Stars",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FANDANGO_STARS",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Fandango_Ratingvalue",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FANDANGO_RATINGVALUE",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "RT_norm",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RT_NORM",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "RT_user_norm",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RT_USER_NORM",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_norm",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_NORM",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_user_nom",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_USER_NOM",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "IMDB_norm",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "IMDB_NORM",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "RT_norm_round",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RT_NORM_ROUND",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "RT_user_norm_round",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RT_USER_NORM_ROUND",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_norm_round",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_NORM_ROUND",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_user_norm_round",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_USER_NORM_ROUND",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "IMDB_norm_round",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "IMDB_NORM_ROUND",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Metacritic_user_vote_count",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "METACRITIC_USER_VOTE_COUNT",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "IMDB_user_vote_count",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "IMDB_USER_VOTE_COUNT",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Fandango_votes",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FANDANGO_VOTES",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "Fandango_Difference",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "FANDANGO_DIFFERENCE",
+											"name": "UNNAMED",
 											"type": "String"
 										}
 									}
@@ -985,14 +763,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SourceDataset_zsm",
+								"referenceName": "SourceDataset_csv",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DestinationDataset_zsm",
+								"referenceName": "DestinationDataset_csv",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -1002,8 +780,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_zsm')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_zsm')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_csv')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_csv')]"
 			]
 		}
 	]
