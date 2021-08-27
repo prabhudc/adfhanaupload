@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimeonVM",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
