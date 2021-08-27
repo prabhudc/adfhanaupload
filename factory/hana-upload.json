@@ -1,0 +1,9 @@
+{
+	"name": "hana-upload",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "67d11bea-63fe-4cb0-9509-9beaa3179fd1",
+		"tenantId": "0101de69-893e-4690-875a-ec09d631def8"
+	}
+}
