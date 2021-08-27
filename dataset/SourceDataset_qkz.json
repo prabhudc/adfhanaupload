@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "2019.csv",
+				"fileName": "2018.csv",
 				"container": "dump"
 			},
 			"columnDelimiter": ",",
@@ -25,7 +25,7 @@
 				"type": "String"
 			},
 			{
-				"name": "OP_UNIQUE_CARRIER",
+				"name": "OP_CARRIER",
 				"type": "String"
 			},
 			{
@@ -38,6 +38,10 @@
 			},
 			{
 				"name": "DEST",
+				"type": "String"
+			},
+			{
+				"name": "CRS_DEP_TIME",
 				"type": "String"
 			},
 			{
@@ -65,11 +69,35 @@
 				"type": "String"
 			},
 			{
+				"name": "CRS_ARR_TIME",
+				"type": "String"
+			},
+			{
 				"name": "ARR_TIME",
 				"type": "String"
 			},
 			{
 				"name": "ARR_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLED",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLATION_CODE",
+				"type": "String"
+			},
+			{
+				"name": "DIVERTED",
+				"type": "String"
+			},
+			{
+				"name": "CRS_ELAPSED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_ELAPSED_TIME",
 				"type": "String"
 			},
 			{
@@ -98,6 +126,10 @@
 			},
 			{
 				"name": "LATE_AIRCRAFT_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "Unnamed: 27\r",
 				"type": "String"
 			}
 		]
