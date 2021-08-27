@@ -29,13 +29,13 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_frz')]",
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_0j9')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy_frz",
+						"name": "Copy_0j9",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -96,7 +96,7 @@
 										},
 										"sink": {
 											"name": "RottenTomatoes",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -107,7 +107,7 @@
 										},
 										"sink": {
 											"name": "RottenTomatoes_User",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -118,7 +118,7 @@
 										},
 										"sink": {
 											"name": "Metacritic",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -129,7 +129,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_User",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -140,7 +140,7 @@
 										},
 										"sink": {
 											"name": "IMDB",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -151,7 +151,7 @@
 										},
 										"sink": {
 											"name": "Fandango_Stars",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -162,7 +162,7 @@
 										},
 										"sink": {
 											"name": "Fandango_Ratingvalue",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -173,7 +173,7 @@
 										},
 										"sink": {
 											"name": "RT_norm",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -184,7 +184,7 @@
 										},
 										"sink": {
 											"name": "RT_user_norm",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -195,7 +195,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_norm",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -206,7 +206,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_user_nom",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -217,7 +217,7 @@
 										},
 										"sink": {
 											"name": "IMDB_norm",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -228,7 +228,7 @@
 										},
 										"sink": {
 											"name": "RT_norm_round",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -239,7 +239,7 @@
 										},
 										"sink": {
 											"name": "RT_user_norm_round",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -250,7 +250,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_norm_round",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -261,7 +261,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_user_norm_round",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -272,7 +272,7 @@
 										},
 										"sink": {
 											"name": "IMDB_norm_round",
-											"type": "Double"
+											"type": "String"
 										}
 									},
 									{
@@ -283,7 +283,7 @@
 										},
 										"sink": {
 											"name": "Metacritic_user_vote_count",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -294,7 +294,7 @@
 										},
 										"sink": {
 											"name": "IMDB_user_vote_count",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -305,7 +305,7 @@
 										},
 										"sink": {
 											"name": "Fandango_votes",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
@@ -316,7 +316,7 @@
 										},
 										"sink": {
 											"name": "Fandango_Difference",
-											"type": "Double"
+											"type": "String"
 										}
 									}
 								],
@@ -329,14 +329,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SourceDataset_frz",
+								"referenceName": "SourceDataset_0j9",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DestinationDataset_frz",
+								"referenceName": "DestinationDataset_0j9",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -346,32 +346,12 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_frz')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_frz')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_0j9')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_0j9')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_frz')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "SAPHANAViaODBCLinkedService",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "OdbcTable",
-				"schema": [],
-				"typeProperties": {
-					"tableName": "\"DEVUSER\".\"FANDANGO\""
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SAPHANAViaODBCLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_ojm')]",
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_0j9')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -418,125 +398,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_frz')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "fandango_scores.csv",
-						"container": "dump"
-					},
-					"columnDelimiter": ",",
-					"rowDelimiter": "\n",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "FILM",
-						"type": "String"
-					},
-					{
-						"name": "RottenTomatoes",
-						"type": "String"
-					},
-					{
-						"name": "RottenTomatoes_User",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_User",
-						"type": "String"
-					},
-					{
-						"name": "IMDB",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Stars",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Ratingvalue",
-						"type": "String"
-					},
-					{
-						"name": "RT_norm",
-						"type": "String"
-					},
-					{
-						"name": "RT_user_norm",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_norm",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_nom",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_norm",
-						"type": "String"
-					},
-					{
-						"name": "RT_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "RT_user_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_norm_round",
-						"type": "String"
-					},
-					{
-						"name": "Metacritic_user_vote_count",
-						"type": "String"
-					},
-					{
-						"name": "IMDB_user_vote_count",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_votes",
-						"type": "String"
-					},
-					{
-						"name": "Fandango_Difference",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_ojm')]",
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_0j9')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
