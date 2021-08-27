@@ -1,0 +1,21 @@
+{
+	"name": "SAPHANAViaODBCLinkedService",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Odbc",
+		"typeProperties": {
+			"connectionString": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"authenticationType": "Basic",
+			"userName": "DEVUSER",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3M2JiNTJmZC1iODgxLTQ0YTktOTU3NC0xYjZlYTc4ZWIwMWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeonVM",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
