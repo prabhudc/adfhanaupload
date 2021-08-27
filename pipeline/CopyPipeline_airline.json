@@ -1,0 +1,292 @@
+{
+	"name": "CopyPipeline_airline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_qkz",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dump//2019.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "\"DEVUSER\".\"AIRLINE_DELAY\""
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "OdbcSink",
+						"writeBatchSize": 0
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "FL_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FL_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OP_UNIQUE_CARRIER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OP_UNIQUE_CARRIER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OP_CARRIER_FL_NUM",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OP_CARRIER_FL_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORIGIN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ORIGIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEST",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEP_TIME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEP_TIME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEP_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEP_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TAXI_OUT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TAXI_OUT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHEELS_OFF",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "WHEELS_OFF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHEELS_ON",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "WHEELS_ON",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TAXI_IN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TAXI_IN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ARR_TIME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ARR_TIME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ARR_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ARR_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AIR_TIME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AIR_TIME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DISTANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DISTANCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CARRIER_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CARRIER_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WEATHER_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "WEATHER_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAS_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NAS_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SECURITY_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SECURITY_DELAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LATE_AIRCRAFT_DELAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LATE_AIRCRAFT_DELAY",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_qkz",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_qkz",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
